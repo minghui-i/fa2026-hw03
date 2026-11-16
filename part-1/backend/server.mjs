@@ -48,6 +48,7 @@ const server = createServer((req, res) => {
     runtime: `nodejs-${process.version}`,
     platform: PLATFORM,
     instance: hostname(),
+    message: "Hello",
   });
 });
 
