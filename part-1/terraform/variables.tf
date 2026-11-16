@@ -10,7 +10,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "Name prefix for every resource this configuration creates."
   type        = string
-  default     = "cis1912-hw3-part1"
+  default     = "cis1912-hw3-part1-mz"
 }
 
 variable "container_port" {

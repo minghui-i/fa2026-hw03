@@ -16,12 +16,14 @@ resource "aws_ecr_repository" "backend" {
   #     second push just fails.
   #
   # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository
+
+  name                 = var.project_name
+  force_delete         = true
+  image_tag_mutability = "MUTABLE"
 }
 
 resource "docker_image" "backend" {
-  # TODO: the image's full name, including the tag to push it under. Build it
-  #       from the repository above rather than hardcoding your account ID.
-  #       (`terraform validate` will name the missing argument for you.)
+  name = "${aws_ecr_repository.backend.repository_url}:${var.image_tag}"
 
   # GIVEN: what to build. The backend source sits in part-1/backend.
   build {
